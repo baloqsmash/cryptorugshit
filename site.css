@@ -1,0 +1,44 @@
+@font-face {
+	font-family: Panton-BlackCaps;
+	src: url("Panton-BlackCaps.otf") format("opentype");
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+	background-image: url("background.png");
+	background-repeat: repeat;
+	background-size: 33%;
+	font-family: Panton-BlackCaps;
+	color: white;
+}
+.btn-dark{
+	background-color: rgba(0,0,0,.5);
+}
+.round-link {
+  border-radius: 50%;
+  -webkit-transition: filter 0.2s, -webkit-transform 0.5s ease-in-out;
+		  transition: filter 0.2s, transform 0.5s ease-in-out;
+}
+.round-link:hover {
+  -webkit-transform: rotate(-20deg);
+		  transform: rotate(-20deg);
+  filter: brightness(80%); 
+}
+.card{
+	background: transparent;
+	border: 0;
+}
+@media only screen and (min-width: 992px) {
+	#unityContainer{
+		width: 75%;
+	}
+}
+#numberOfTokens{
+	border-color: #343a40;
+	border-radius: 4px;
+	color: white;
+	background-color: rgba(0,0,0,.5);
+	border-width: 0px;
+	text-align: center;
+}

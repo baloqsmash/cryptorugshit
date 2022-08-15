@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <link rel="icon" type="image/png" href="../logo.png" />
+	<title>MoonRugs - Minting</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"type="text/css" /> -->
+    <link rel="stylesheet" href="../site.css" />
+	
+	<script src="https://cdn.jsdelivr.net/npm/web3@3.0.0-rc.5/dist/web3.min.js" integrity="sha256-6qVmx93bj7MIUVf5+Ou4h5tBoew5BOfUmIfWEMYlyS4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js" integrity="sha256-lo0QO6reEWDC4tCWvN6wrXBACysukt8GvW5uDHtfTbo=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.8/dist/index.min.js"></script>	
+</head>
+<body>
+	
+	<div class="container">
+        <main role="main" > 
+            <div class="text-center">
+				<!-- <br> -->
+				
+				<div class="h4 px-2 pt-2 row">
+					<a href="../#about" class="col p-2 text-black-50">About</a>
+					<a href="../#suggestions" class="col p-2 text-black-50">Suggestions</a>
+					<a href="../#faqs" class="col p-2 text-black-50">FAQS</a>				
+					<a href="../mint" class="col p-2 text-black-50">Mint</a>	
+					<a href="" class="col p-2 text-black-50">Pullverse</a>
+				</div>
+			</div>
+			<div  class="d-flex justify-content-center">
+				<div id="unityContainer" style="aspect-ratio:1/1;"></div>
+			</div>
+		</main>
+	</div>
+	
+    <footer class="footer text-muted" style="overflow:auto;">
+        <div class="container">     
+			<div class="">
+				<a rel="license" data-spdx="CC0-1.0" href="https://creativecommons.org/publicdomain/zero/1.0/">
+					<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/p/zero/1.0/88x15.png"/>
+				</a><span class="align-middle text-black-50"> - MoonRugs</span>
+			</div>
+        </div>
+    </footer>
+
+	<script type="module" src="../Mint/minting.js"></script>
+	
+	<script src="UnityLoader.js"></script>
+    <script>
+      var MyGameInstance = UnityLoader.instantiate("unityContainer", "Build.json");
+	  var mintingModule;
+	  var getRugIds = async function(){
+		let rugIds;
+		if(typeof mintingModule === 'undefined')
+			await import("../Mint/minting.js").then(module => { mintingModule = module; rugIds = mintingModule.getRugTokenIds() });
+		else
+			rugIds = await mintingModule.getRugTokenIds();
+		return rugIds;
+	  };
+    </script>
+</body>
+</html>
