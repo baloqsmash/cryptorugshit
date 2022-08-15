@@ -42,10 +42,7 @@ function showMessage(message){
 };
 
 async function getAccountData(){
-	//get wallet addrs and then wrap this into the Web3 JS
-	web3 = new Web3(provider); //var
-	//now do all the web3 stuff you want...
-	//awesome web3 application goes here			
+	web3 = new Web3(provider); 		
 	const accounts = await web3.eth.getAccounts();
 	account = accounts[0];
 	contract = new web3.eth.Contract(TokenABI, contractAddress);
@@ -56,14 +53,6 @@ async function refreshAccountData(){
 };
 
 function init() {
-
-  // console.log("Initializing example");
-  // console.log("WalletConnectProvider is", WalletConnectProvider);
-  // console.log("Fortmatic is", Fortmatic);
-
-  // Tell Web3modal what providers we have available.
-  // Built-in web browser provider (only one can exist as a time)
-  // like MetaMask, Brave or Opera is added automatically by Web3modal
   const providerOptions = {
     walletconnect: {
       package: WalletConnectProvider,
@@ -74,8 +63,8 @@ function init() {
   };
 
   web3Modal = new Web3Modal({
-    cacheProvider: false, // optional
-    providerOptions, // required
+    cacheProvider: false, 
+    providerOptions,
   });
 }
 
@@ -88,17 +77,14 @@ async function onConnect(){
 		return;
 	}
 	
-	// Subscribe to accounts change
 	provider.on("accountsChanged", (accounts) => {
 		getAccountData();
 	});
 
-	// Subscribe to chainId change
 	provider.on("chainChanged", (chainId) => {
 		getAccountData();
 	});
 
-	// Subscribe to networkId change
 	provider.on("networkChanged", (networkId) => {
 		getAccountData();
 	});
@@ -145,38 +131,6 @@ async function mint(numToMint){
 	}
 };
 
-// async function totalSupply(){
-	// if(!web3 || !(await isConnected()))
-		// await onConnect();
-		
-	// if(!await isConnected())
-		// return;
-	
-	// try{
-		// let result = await contract.methods.totalSupply().call();
-		// showMessage(`total supply is ${result}`);
-	// } catch (error) {
-		// console.log(error);
-		// showMessage("Error: " + error.message);
-	// }
-// };
-
-// async function getBalance(){
-	// if(!web3 || !(await isConnected()))
-		// await onConnect();
-		
-	// if(!await isConnected())
-		// return;
-	
-	// try{
-		// let result = await contract.methods.balanceOf(account).call();
-		// showMessage(`Balance for account: ${account} is: ${result}`);
-	// } catch (error) {
-		// console.log(error);
-		// showMessage("Error: " + error.message);
-	// }
-// };
-
 async function getTokenIds(){
 	if(!web3 || !(await isConnected()))
 		await onConnect();
@@ -213,9 +167,6 @@ window.addEventListener('load', async () => {
 	init();
 	if(!(document.querySelector("#mintTokens"))) return;
 	document.querySelector("#mintTokens").addEventListener("click", async ()=>{ await mint(numberOfTokensToMint); });
-	//document.querySelector("#getTotalSupply").addEventListener("click", async () => { await totalSupply(); });
-	//document.querySelector("#getBalance").addEventListener("click", async () => { await getBalance(); });
-	//document.querySelector("#getTokenIds").addEventListener("click", async () => { await getTokenIds(); });
 	document.querySelector("#numberOfTokens").addEventListener("change", () => { getNumberOfTokensToMint(); });
 	document.querySelector("#numberOfTokens").addEventListener("keyup", () => { getNumberOfTokensToMint(); });
 	document.querySelector("#increase").addEventListener("click", () => { increase(); });
