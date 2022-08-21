@@ -1,7 +1,7 @@
 "use strict"
 	
 import TokenABI from "./MoonRugs.js";
-const contractAddress = "0xd1c881A06aADa2BAE779b715e2b84aa6903Bbeea";
+const contractAddress = "0x0932e96f0DC9C1ef6E8f2B28FD5AEA0F9faA11a8";
 
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
