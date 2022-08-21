@@ -108,7 +108,7 @@ async function mint(numToMint){
 	if(!await isConnected())
 		return;
 		
-	const pricePerToken = 0.0069;
+	const pricePerToken = 0.00;
 	const priceForMint = pricePerToken * numToMint;
 	var mintPrice = web3.utils.toWei(String(priceForMint), 'ether');
 	try {
